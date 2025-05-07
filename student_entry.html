@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library Access - Smart Entry</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #message {
+      margin-top: 10px;
+      transition: opacity 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Library Access Management</h2>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="admin_dashboard.html">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <h3>Student Smart Access</h3>
+    <input type="number" id="student_id" name="student_id" required
+       style="width: 300px; height: 45px; font-size: 18px;" autocomplete="off" />
+    <div id="message"></div>
+  </div>
+
+  <script>
+    const studentInput = document.getElementById("student_id");
+    const messageDiv = document.getElementById("message");
+
+    studentInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const studentId = studentInput.value;
+        if (studentId) {
+          fetch("student_process.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `student_id=${studentId}`,
+          })
+            .then((response) => response.text())
+            .then((data) => {
+              messageDiv.innerHTML = data;
+              messageDiv.style.opacity = 1;
+              studentInput.value = "";
+
+              
+              setTimeout(() => {
+                messageDiv.style.opacity = 0;
+                messageDiv.innerHTML = "";
+              }, 4000);
+            });
+        }
+      }
+    });
+  </script>
+</body>
+</html>

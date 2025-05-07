@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="admin_dashboard.js"></script> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        nav {
+            background-color: #2c3e50;
+            padding: 12px;
+            margin-bottom: 30px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #f1c40f;
+        }
+
+        .button-link {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 10px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .button-link:hover {
+            background-color: #2980b9;
+        }
+
+        .dept-button {
+            display: inline-block;
+            padding: 10px 16px;
+            margin: 5px;
+            background-color: #27ae60;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #popup-area {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1000px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        #batch-form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #batch-input {
+            padding: 10px;
+            font-size: 18px;
+            width: 200px;
+            text-align: center;
+        }
+
+        #submit-batch {
+            padding: 10px;
+            font-size: 18px;
+            width: 200px;
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #submit-batch:hover {
+            background-color: #d35400;
+        }
+    </style>
+</head>
+<body>
+    <h2>Admin Dashboard</h2>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="student_entry.html">Student Entry</a>
+        <a href="admin_dashboard.html">Admin Dashboard</a>
+    </nav>
+
+    <div>
+        <a href="#" class="button-link" onclick="loadTop10()">Top 10 Students by Duration</a><br>
+        <a href="#" class="button-link" onclick="showDepartments()">Department-wise Usage</a><br>
+        <a href="#" class="button-link" onclick="showBatchInput()">Batch-wise Usage</a><br>
+        <a href="#" class="button-link" onclick="loadAllLogs()">All Access Logs</a>
+    </div>
+
+    <div id="popup-area"></div>
+
+</body>
+</html>
